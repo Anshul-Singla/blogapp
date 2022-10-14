@@ -5,8 +5,10 @@ const Navbar = () => {
   return (
     <div className="navbar">
         <p>Home</p>
-        <p>Sign in</p>
-        <p>Sign up</p>
+        <div className='auth' >
+          <p>Sign in</p>
+          <p>Sign up</p>
+        </div>
     </div>
   )
 }
