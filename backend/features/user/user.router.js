@@ -17,7 +17,8 @@ app.post('/signin' , async(req , res) => {
         res.status(401).send('user nor found');
     }
     const mainToken = jwt.default.sign({name:user.username} , "chabi121" , {expiresIn:"1 hour"})
-    res.send({message : "Login success"  , mainToken})
+    const refreshToken = jwt.default.sign({} , "refreshChabi121" , {expiresIn:"7 days"})
+    res.send({message : "Login success"  , mainToken , refreshToken})
     
 })
 
