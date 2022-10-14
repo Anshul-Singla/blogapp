@@ -18,4 +18,6 @@ const userSchema = new Schema({
         require:true
     }
 
-})
+});
+const UserModel = model("user" , userSchema);
+export default  UserModel;
