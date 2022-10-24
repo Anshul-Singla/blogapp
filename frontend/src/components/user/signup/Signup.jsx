@@ -13,6 +13,7 @@ Button,
 useDisclosure,
 } from '@chakra-ui/react'
 import { useState } from 'react';
+import { signUpAPI } from '../../../store/auth/auth.actions';
 const Signup = () => {
   const [user , setUser] = useState({});
   const handleChange = (e) => {
@@ -26,6 +27,7 @@ const Signup = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    signUpAPI(user);
 
   }
   console.log('user:', user)
