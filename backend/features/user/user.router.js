@@ -27,7 +27,7 @@ app.post('/signup' , async(req , res) => {
     console.log('body:', req.body);
     const newUser = await UserModel.create(req.body );
     
-    res.send("User is created Welcom to blog");
+    res.send({message: "User is created Welcome to blog" , newUser});
 
 })
 
