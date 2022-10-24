@@ -2,28 +2,42 @@ import React from 'react';
 import './signup.css';
 import  poster from './background.jpg'
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-  useDisclosure,
+Modal,
+ModalOverlay,
+ModalContent,
+// ModalHeader,
+// ModalFooter,
+// ModalBody,
+// ModalCloseButton,
+Button,
+useDisclosure,
 } from '@chakra-ui/react'
 import { useState } from 'react';
 const Signup = () => {
-  const [user , setuser] = useState({});
-  console.log('poster:', poster)
+  const [user , setUser] = useState({});
+  const handleChange = (e) => {
+    const {name , value} = e.target;
+    // console.log('name:', name);
+    // console.log('value:', value)
+    setUser({
+      ...user,
+      [name] : value
+    })
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+  }
+  console.log('user:', user)
+  // console.log('poster:', poster)
   return (
     <>
-      <BasicUsage />
+      <SignupForm handleChange={handleChange} handleSubmit={handleSubmit} />
     </>)
   
 }
 
-function BasicUsage() {
+function SignupForm({handleChange , handleSubmit}) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <>
@@ -35,39 +49,40 @@ function BasicUsage() {
             <div className='up_body' >
               <div className="up_form">
                 <div className="up_form_form">
-                    <form >
+                    <form onSubmit={handleSubmit}>
                       <div>
                         <div>
                           <label htmlFor="">Firstname </label>
-                          <input type="text" name="username"  />
+                          <input type="text" name="fName" onChange={handleChange} />
                         </div>
                         <div>
                           <label htmlFor="">Lastname </label>
-                          <input type="text" name="username" />
+                          <input type="text" name="lName" onChange={handleChange} />
                         </div>
                       </div>
                       <div>
                         <div>
                           <label htmlFor="">E-mail </label>
-                          <input type="email" name="email" />
+                          <input type="email" name="email" onChange={handleChange}/>
                         </div>
                         <div>
                           <label htmlFor="">Password</label>
-                          <input type="password" name="password"   />
+                          <input type="password" name="password" onChange={handleChange}  />
                         </div>
                       </div>
                       <div>
                         <div>
                           <label htmlFor="">Age</label>
-                          <input type="number" name="age" />
+                          <input type="number" name="age"onChange={handleChange} />
                         </div>
                       </div> 
                       <div>
                         <div>
                           <label htmlFor="">Phone Number</label>
-                          <input type="password" name="password" />
+                          <input type="number" name="contact_number" onChange={handleChange} />
                         </div>
                       </div>
+                      <input type="submit" value="Submit"  />
                       </form>
                   </div>
                   <div className="up_form_image" style={{
