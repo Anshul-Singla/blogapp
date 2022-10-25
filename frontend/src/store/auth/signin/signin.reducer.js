@@ -1,29 +1,29 @@
-import { AUTH_SIGN_UP_ERROR, AUTH_SIGN_UP_LOADING, AUTH_SIGN_UP_SUCCESS } from "./signup.types";
+import { AUTH_SIGN_IN_ERROR, AUTH_SIGN_IN_LOADING, AUTH_SIGN_IN_SUCCESS } from "./signin.types";
 
 
 
-export const signupInitialState = {
+export const signinInitialState = {
     loading : false ,
-    status:0,
     data:{
         message:"",
-        user_detailS:{}
+        token:'',
+        refresh_token:''
     },
     error:false
 };
-export const signupReducer = (state = signupInitialState , {type , payload}) => {
+export const signinReducer = (state = signinInitialState , {type , payload}) => {
     switch(type){
-        case AUTH_SIGN_UP_LOADING:{
+        case AUTH_SIGN_IN_LOADING:{
             return {
                 ...state , loading:true,
             }
         }
-        case AUTH_SIGN_UP_SUCCESS:{
+        case AUTH_SIGN_IN_SUCCESS:{
             return {
                 ...state , data:{ ...state.data , message:payload.data.message , user_detailS:payload.data.newUser } , status : payload.status,loading : false , error:false
             }
         }
-        case AUTH_SIGN_UP_ERROR:{
+        case AUTH_SIGN_IN_ERROR:{
             return {
                 ...state , loading:false , error:true,
             }

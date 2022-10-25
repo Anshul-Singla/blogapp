@@ -13,11 +13,13 @@ app.get('/' , async (req , res) =>{
 
 
 app.post('/signin' , async(req , res) => {
-    let user = await UserModel.findOne({email:req.body.email , password:req.body.password} , {_id:0 , username:1});
+    console.log('req.body:', req.body)
+    let user = await UserModel.findOne({email:req.body.email , password:req.body.password});
+    console.log('user:', user)
     if(!user){
-        res.status(401).send('user nor found');
+        res.status(401).send('user not found');
     }
-    const mainToken = jwt.default.sign({name:user.username} , "chabi121" , {expiresIn:"1 hour"})
+    const mainToken = jwt.default.sign({first_name:user.fName  , last_name:user.lName , email : user.email } , "chabi121" , {expiresIn:"1 day"})
     const refreshToken = jwt.default.sign({} , "refreshChabi121" , {expiresIn:"7 days"})
     res.send({message : "Login success"  , mainToken , refreshToken})
     

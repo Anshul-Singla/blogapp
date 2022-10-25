@@ -11,31 +11,57 @@ ModalContent,
 // ModalCloseButton,
 Button,
 useDisclosure,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from '@chakra-ui/react'
 import { useState } from 'react';
 import { signUpAPI } from '../../../store/auth/signup/signup.actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 const Signup = () => {
-  const store = useSelector(store => store);
+  const store = useSelector(store => store.authSignup);
   const dispatch = useDispatch();
   const [user , setUser] = useState({});
-  console.log('store:', store)
+  
   const handleChange = (e) => {
     const {name , value} = e.target;
-    // console.log('name:', name);
-    // console.log('value:', value)
     setUser({
       ...user,
       [name] : value
     })
   };
+  // console.log('store:', store)
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signUpAPI(user));
-
+    
+  //   if(store.status == 200){
+  //     <Alert status='success'>
+  //     <AlertIcon />
+  //     User has been created
+  //   </Alert>
+  //   }else{
+  //     <Alert status='error'>
+  //   <AlertIcon />
+  //   There was an error processing your request
+  // </Alert>
+  //   }
   }
-  console.log('user:', user)
-  // console.log('poster:', poster)
+  // useEffect(()=>{
+  //     if(store.status == 200){
+  //     <Alert status='success'>
+  //     <AlertIcon />
+  //     User has been created
+  //   </Alert>
+  //   }else{
+  //     <Alert status='error'>
+  //   <AlertIcon />
+  //   There was an error processing your request
+  // </Alert>
+  //   }
+  // },[store.status])
   return (
     <>
       <SignupForm handleChange={handleChange} handleSubmit={handleSubmit} />

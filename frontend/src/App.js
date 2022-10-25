@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/navbar/Navbar';
 import Signup from './components/user/signup/Signup';
+import Signin from './components/user/signin/Signin';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
      
      <Navbar/>
      {/* <Signup/> */}
+     {/* <Signin/> */}
     </div>
   );
 }

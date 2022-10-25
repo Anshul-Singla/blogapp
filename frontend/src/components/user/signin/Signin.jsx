@@ -13,9 +13,9 @@ Button,
 useDisclosure,
 } from '@chakra-ui/react'
 import { useState } from 'react';
-import { signUpAPI } from '../../../store/auth/signup/signup.actions';
 import { useDispatch, useSelector } from 'react-redux';
-const Signup = () => {
+import { signInAPI } from '../../../store/auth/signin/signin.actions';
+const Signin = () => {
   const store = useSelector(store => store);
   const dispatch = useDispatch();
   const [user , setUser] = useState({});
@@ -31,23 +31,23 @@ const Signup = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signUpAPI(user));
+    dispatch(signInAPI(user))
 
   }
   console.log('user:', user)
   // console.log('poster:', poster)
   return (
     <>
-      <SignupForm handleChange={handleChange} handleSubmit={handleSubmit} />
+      <SigninForm handleChange={handleChange} handleSubmit={handleSubmit} />
     </>)
   
 }
 
-function SignupForm({handleChange , handleSubmit}) {
+function SigninForm({handleChange , handleSubmit}) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <>
-      <Button onClick={onOpen}>Sign up</Button>
+      <Button onClick={onOpen}>Sign In</Button>
 
       <Modal isOpen={isOpen} size="2xl" onClose={onClose}>
         <ModalOverlay />
@@ -58,34 +58,12 @@ function SignupForm({handleChange , handleSubmit}) {
                     <form onSubmit={handleSubmit}>
                       <div>
                         <div>
-                          <label htmlFor="">Firstname </label>
-                          <input type="text" name="fName" onChange={handleChange} />
-                        </div>
-                        <div>
-                          <label htmlFor="">Lastname </label>
-                          <input type="text" name="lName" onChange={handleChange} />
-                        </div>
-                      </div>
-                      <div>
-                        <div>
                           <label htmlFor="">E-mail </label>
                           <input type="email" name="email" onChange={handleChange}/>
                         </div>
                         <div>
                           <label htmlFor="">Password</label>
                           <input type="password" name="password" onChange={handleChange}  />
-                        </div>
-                      </div>
-                      <div>
-                        <div>
-                          <label htmlFor="">Age</label>
-                          <input type="number" name="age"onChange={handleChange} />
-                        </div>
-                      </div> 
-                      <div>
-                        <div>
-                          <label htmlFor="">Phone Number</label>
-                          <input type="number" name="contact_number" onChange={handleChange} />
                         </div>
                       </div>
                       <input type="submit" value="Submit"  />
@@ -102,4 +80,4 @@ function SignupForm({handleChange , handleSubmit}) {
   )
 }
 
-export default Signup
+export default Signin

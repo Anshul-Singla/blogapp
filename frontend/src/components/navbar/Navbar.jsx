@@ -1,4 +1,5 @@
 import React from 'react'
+import Signin from '../user/signin/Signin'
 import Signup from '../user/signup/Signup'
 import  './navbar.css'
 const Navbar = () => {
@@ -13,7 +14,7 @@ const Navbar = () => {
 
         </div>
         <div className='n-auth' >
-          <p>Sign in</p>
+          <Signin/>
           <Signup/>
         </div>
     </div>
