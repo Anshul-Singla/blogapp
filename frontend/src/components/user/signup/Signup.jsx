@@ -1,6 +1,6 @@
 import React from 'react';
 import './signup.css';
-import  poster from './background.jpg'
+import  poster from '../background.jpg'
 import {
 Modal,
 ModalOverlay,
@@ -13,9 +13,13 @@ Button,
 useDisclosure,
 } from '@chakra-ui/react'
 import { useState } from 'react';
-import { signUpAPI } from '../../../store/auth/auth.actions';
+import { signUpAPI } from '../../../store/auth/signup/signup.actions';
+import { useDispatch, useSelector } from 'react-redux';
 const Signup = () => {
+  const store = useSelector(store => store);
+  const dispatch = useDispatch();
   const [user , setUser] = useState({});
+  console.log('store:', store)
   const handleChange = (e) => {
     const {name , value} = e.target;
     // console.log('name:', name);
@@ -27,7 +31,7 @@ const Signup = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    signUpAPI(user);
+    dispatch(signUpAPI(user));
 
   }
   console.log('user:', user)
