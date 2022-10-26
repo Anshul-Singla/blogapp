@@ -16,7 +16,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInAPI } from '../../../store/auth/signin/signin.actions';
 const Signin = () => {
-  const store = useSelector(store => store);
+  const store = useSelector(store => store.authSignin);
   const dispatch = useDispatch();
   const [user , setUser] = useState({});
   console.log('store:', store)

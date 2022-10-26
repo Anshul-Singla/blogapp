@@ -20,7 +20,7 @@ export const signinReducer = (state = signinInitialState , {type , payload}) => 
         }
         case AUTH_SIGN_IN_SUCCESS:{
             return {
-                ...state , data:{ ...state.data , message:payload.data.message , user_detailS:payload.data.newUser } , status : payload.status,loading : false , error:false
+                ...state , data:{ ...state.data , message:payload.data.message , token : payload.data.mainToken ,refresh_token :payload.data.refreshToken } , status : payload.status,loading : false , error:false
             }
         }
         case AUTH_SIGN_IN_ERROR:{
@@ -33,3 +33,4 @@ export const signinReducer = (state = signinInitialState , {type , payload}) => 
         }
     }
 }
+// kuch nhi hua aaj
