@@ -8,9 +8,13 @@ const Navbar = () => {
     <div className="n-navbar">
         <p>Home</p>
         <div className='n-privateList'>
+          <p>LIFE IS AWESOME</p>
           <p>Tourist</p>
           <p>Jokes</p>
           <p>Favourite Blogs</p>
+          <p>react</p>
+          <p>Fahhaha</p>
+
 
         </div>
         <div className='n-auth' >
