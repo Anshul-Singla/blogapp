@@ -85,6 +85,9 @@ function SignupForm({handleChange , handleSubmit}) {
                       <div>
                         <div>
                           <label htmlFor="">Firstname </label>
+                          <label htmlFor="">Firstname </label>
+                          <label htmlFor="">Firstname </label>
+
                           <input type="text" name="fName" onChange={handleChange} />
                         </div>
                         <div>
